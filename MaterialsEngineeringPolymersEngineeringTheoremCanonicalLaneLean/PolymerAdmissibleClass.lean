@@ -1,0 +1,26 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean.PolymerPhaseBehavior
+import HautevilleHouse.MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean.PolymerElasticity
+import HautevilleHouse.MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean.PolymerCrystallinity
+import HautevilleHouse.MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean.PolymerFractureMechanics
+
+namespace HautevilleHouse
+namespace MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean
+
+structure MaterialsEngineeringPolymersAdmittedObject where
+  phaseBehavior : PolymerPhaseBehaviorPackage
+  elasticity : PolymerElasticityPackage
+  crystallinity : PolymerCrystallinityPackage
+  fractureMechanics : PolymerFractureMechanicsPackage
+
+structure MaterialsEngineeringPolymersAdmissibleClass where
+  object : MaterialsEngineeringPolymersAdmittedObject
+  endpointSatisfied : Prop
+  remainderRecorded : Prop
+  gateWitness : endpointSatisfied ∨ remainderRecorded
+
+def admittedClosure (A : MaterialsEngineeringPolymersAdmissibleClass) : Prop :=
+  bridgeClosed A ∧ gateClosed A
+
+end MaterialsEngineeringPolymersEngineeringTheoremCanonicalLaneLean
+end HautevilleHouse
